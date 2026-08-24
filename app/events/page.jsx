@@ -31,9 +31,6 @@ export default async function EventsPage() {
 
   return (
     <>
-      <pre style={{ background: '#111', color: '#0f0', padding: 12, fontSize: 11, overflow: 'auto' }}>
-        {JSON.stringify({ allLen: all.length, upcomingLen: upcoming.length, today, month, hasFeatured: !!featured, thisMonthLen: thisMonth.length, laterLen: later.length }, null, 2)}
-      </pre>
       <div className="hero">
         <div className="kicker">FALSE IDOLS FREESTYLE ATHLETICS</div>
         <h1>EVENTS</h1>
