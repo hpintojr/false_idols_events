@@ -14,11 +14,12 @@ export default async function EditEvent({ params }) {
   const rows = await sql`SELECT * FROM events WHERE id = ${params.id}`;
   const event = rows[0];
   if (!event) notFound();
+  if (user.role !== 'admin' && event.submitted_by !== user.id) redirect('/admin/events');
 
   return (
     <>
-      <div className="hero" style={{ padding: '24px 0 0' }}><h1>EDIT EVENT</h1></div>
-      <EventForm event={event} role={user.role} />
+      <div className="hero" style={{ padding: '24px 0 0' }}><h1>{user.role === 'admin' ? 'EDIT EVENT' : 'MY EVENT'}</h1></div>
+      <EventForm event={event} role={user.role} userId={user.id} />
     </>
   );
 }
