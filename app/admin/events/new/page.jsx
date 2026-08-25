@@ -11,8 +11,8 @@ export default async function NewEvent() {
 
   return (
     <>
-      <div className="hero" style={{ padding: '24px 0 0' }}><h1>CREATE EVENT</h1></div>
-      <EventForm role={user.role} />
+      <div className="hero" style={{ padding: '24px 0 0' }}><h1>{user.role === 'admin' ? 'CREATE EVENT' : 'SUBMIT EVENT'}</h1></div>
+      <EventForm role={user.role} userId={user.id} />
     </>
   );
 }
