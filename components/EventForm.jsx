@@ -3,12 +3,13 @@ import { useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { upload } from '@vercel/blob/client';
 
-const CATEGORIES = ['Moto','BMX','Skate','Auto','Stunt','Freestyle','Music','Lifestyle','Brand Appearance','Competition','Shoot','Meet-Up','Party','Community','Other'];
+const CATEGORIES = ['Moto','BMX','Skate','Auto','Stunt','Freestyle','Giveaway','Music','Lifestyle','Brand Appearance','Competition','Shoot','Meet-Up','Party','Community','Other'];
 
-export default function EventForm({ event, role }) {
+export default function EventForm({ event, role, userId }) {
   const e = event || {};
   const isNew = !event;
   const isAdmin = role === 'admin';
+  const isOwner = isNew || e.submitted_by === userId;
   const router = useRouter();
   const formRef = useRef(null);
   const [busy, setBusy] = useState(false);
@@ -48,7 +49,7 @@ export default function EventForm({ event, role }) {
         ticket_url: form.ticket_url.value,
         ig_url: form.ig_url.value,
         notes: form.notes.value,
-        featured: form.featured.checked,
+        featured: form.featured ? form.featured.checked : false,
         public_uploads: form.public_uploads.checked,
         flyer_url: flyerUrl,
         set_status: setStatus || '',
@@ -97,7 +98,7 @@ export default function EventForm({ event, role }) {
       <div className="field"><label>TICKET / RSVP LINK</label><input type="url" name="ticket_url" maxLength={300} defaultValue={e.ticket_url || ''} placeholder="https://" /></div>
       <div className="field"><label>INSTAGRAM LINK</label><input type="url" name="ig_url" maxLength={300} defaultValue={e.ig_url || ''} placeholder="https://instagram.com/..." /></div>
       <div className="field"><label>INTERNAL NOTES (never public)</label><textarea name="notes" maxLength={2000} style={{ minHeight: 70 }} defaultValue={e.notes || ''} /></div>
-      <label className="check"><input type="checkbox" name="featured" defaultChecked={!!e.featured} /><span>Feature this event (hero placement on the Events page)</span></label>
+      {isAdmin && <label className="check"><input type="checkbox" name="featured" defaultChecked={!!e.featured} /><span>Feature this event (hero placement on the Events page)</span></label>}
       <label className="check"><input type="checkbox" name="public_uploads" defaultChecked={isNew || !!e.public_uploads} /><span>Allow public media uploads (Media Drop + QR)</span></label>
 
       {!isNew && (
@@ -108,9 +109,12 @@ export default function EventForm({ event, role }) {
             {isAdmin && e.status === 'published' && <button type="button" className="btn btn-warn btn-sm" disabled={busy} onClick={(ev) => { if (confirm('Cancel this event?')) submit(ev, 'cancelled'); }}>CANCEL EVENT</button>}
             {isAdmin && e.status !== 'archived' && <button type="button" className="btn btn-ghost btn-sm" disabled={busy} onClick={(ev) => submit(ev, 'archived')}>ARCHIVE</button>}
             {isAdmin && (e.status === 'cancelled' || e.status === 'archived') && <button type="button" className="btn btn-ghost btn-sm" disabled={busy} onClick={(ev) => submit(ev, 'draft')}>BACK TO DRAFT</button>}
-            {!isAdmin && e.status === 'draft' && <button type="button" className="btn btn-sm" disabled={busy} onClick={(ev) => submit(ev, 'submitted')}>SUBMIT FOR APPROVAL</button>}
+            {!isAdmin && isOwner && e.status === 'draft' && <button type="button" className="btn btn-sm" disabled={busy} onClick={(ev) => submit(ev, 'submitted')}>SUBMIT FOR APPROVAL</button>}
+            {!isAdmin && isOwner && (e.status === 'submitted' || e.status === 'published') && (
+              <button type="button" className="btn btn-warn btn-sm" disabled={busy} onClick={(ev) => { if (confirm("Cancel this event? You won't be able to undo this yourself — only an admin can reinstate it.")) submit(ev, 'cancelled'); }}>CANCEL EVENT</button>
+            )}
           </div>
-          {!isAdmin && <p className="muted" style={{ fontSize: 12, marginTop: 6 }}>Staff submissions are reviewed by an admin before publishing.</p>}
+          {!isAdmin && <p className="muted" style={{ fontSize: 12, marginTop: 6 }}>New submissions are reviewed by an admin before publishing. You can cancel your own event, but you can't delete it.</p>}
         </div>
       )}
 
