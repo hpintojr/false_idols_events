@@ -38,8 +38,7 @@ export default async function EventDetail({ params }) {
     ['TYPE', e.category],
   ].filter(([, v]) => v);
 
-  const gcalDate = (iso) => (iso ? iso.replace(/[-:]/g, '') + '00' : '');
-  const gcal = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(e.name)}&dates=${gcalDate(e.start_at)}/${gcalDate(e.end_at || e.start_at)}&location=${encodeURIComponent([e.venue, e.city, e.state].filter(Boolean).join(', '))}`;
+  const icsUrl = `/api/ics/${e.slug}`;
 
   const jsonld = {
     '@context': 'https://schema.org', '@type': 'Event', name: e.name,
@@ -74,7 +73,7 @@ export default async function EventDetail({ params }) {
           </ul>
           <div className="cta-row">
             {e.ticket_url && <a className="btn" href={e.ticket_url} target="_blank" rel="noopener">GET TICKETS / RSVP</a>}
-            {e.status !== 'cancelled' && !isPast && <a className="btn btn-ghost" href={gcal} target="_blank" rel="noopener">ADD TO CALENDAR</a>}
+            {e.status !== 'cancelled' && !isPast && <a className="btn btn-ghost" href={icsUrl} rel="noopener">ADD TO CALENDAR</a>}
             {e.ig_url && <a className="btn btn-ghost" href={e.ig_url} target="_blank" rel="noopener">INSTAGRAM</a>}
           </div>
           {e.description && <p className="desc">{e.description}</p>}
