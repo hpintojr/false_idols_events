@@ -123,13 +123,13 @@ h3 { font-size: 18px; }
   display: grid; grid-template-columns: 1fr; border: 1px solid var(--accent-dark); border-radius: 8px;
   overflow: hidden; background: linear-gradient(120deg, #1a0d11, #141414 60%); text-decoration: none;
 }
-.featured-card .fc-img { max-height: 200px; overflow: hidden; }
+.featured-card .fc-img { max-height: 420px; overflow: hidden; }
 .featured-card .fc-img img { width: 100%; height: 100%; object-fit: cover; }
-.featured-card .fc-body { padding: 16px; }
-.featured-card .fc-kicker { font-family: var(--font-head); color: var(--accent); letter-spacing: 4px; font-size: 12px; }
-.featured-card .fc-name { font-family: var(--font-head); font-size: clamp(18px, 3vw, 26px); line-height: 1.05; margin: 6px 0; }
-.featured-card .fc-meta { color: var(--muted); font-size: 13px; }
-@media (min-width: 760px) { .featured-card { grid-template-columns: 1fr 1fr; } .featured-card .fc-img { max-height: 260px; } }
+.featured-card .fc-body { padding: 26px; }
+.featured-card .fc-kicker { font-family: var(--font-head); color: var(--accent); letter-spacing: 4px; font-size: 13px; }
+.featured-card .fc-name { font-family: var(--font-head); font-size: clamp(28px, 5vw, 44px); line-height: 1.05; margin: 8px 0; }
+.featured-card .fc-meta { color: var(--muted); }
+@media (min-width: 760px) { .featured-card { grid-template-columns: 1fr 1fr; } .featured-card .fc-img { max-height: none; } }
 
 /* ---------- Event detail ---------- */
 .event-hero { display: grid; gap: 26px; margin-top: 20px; }
