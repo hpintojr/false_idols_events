@@ -97,7 +97,7 @@ h3 { font-size: 18px; }
   text-decoration: none; display: flex; flex-direction: column; transition: transform .12s ease, border-color .12s ease;
 }
 .event-card:hover { transform: translateY(-3px); border-color: var(--accent); }
-.event-card .thumb { aspect-ratio: 4/5; background: var(--panel-2); position: relative; overflow: hidden; }
+.event-card .thumb { background: var(--panel-2); position: relative; overflow: hidden; }
 .event-card .thumb img { width: 100%; height: 100%; object-fit: cover; }
 .thumb-placeholder {
   width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
@@ -129,7 +129,7 @@ h3 { font-size: 18px; }
 .featured-card .fc-kicker { font-family: var(--font-head); color: var(--accent); letter-spacing: 4px; font-size: 13px; }
 .featured-card .fc-name { font-family: var(--font-head); font-size: clamp(28px, 5vw, 44px); line-height: 1.05; margin: 8px 0; }
 .featured-card .fc-meta { color: var(--muted); }
-@media (min-width: 760px) { .featured-card { grid-template-columns: 1fr 1fr; } .featured-card .fc-img { max-height: none; } }
+@media (min-width: 760px) { .featured-card { grid-template-columns: 1fr 3fr; } .featured-card .fc-img { max-height: none; } }
 
 /* ---------- Event detail ---------- */
 .event-hero { display: grid; gap: 26px; margin-top: 20px; }
