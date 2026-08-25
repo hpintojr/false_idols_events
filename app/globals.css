@@ -91,7 +91,7 @@ h3 { font-size: 18px; }
 .inline { display: inline; }
 
 /* ---------- Event cards ---------- */
-.event-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px; }
+.event-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px; }
 .event-card {
   background: var(--panel); border: 1px solid var(--line); border-radius: 6px; overflow: hidden;
   text-decoration: none; display: flex; flex-direction: column; transition: transform .12s ease, border-color .12s ease;
@@ -104,12 +104,12 @@ h3 { font-size: 18px; }
   font-family: var(--font-head); font-size: 30px; color: #333; letter-spacing: 2px;
   background: repeating-linear-gradient(135deg, #161616 0 14px, #121212 14px 28px);
 }
-.event-card .body { padding: 14px; display: flex; gap: 12px; }
-.datebox { text-align: center; min-width: 52px; }
-.datebox .mon { font-family: var(--font-head); color: var(--accent); font-size: 13px; letter-spacing: 2px; }
-.datebox .day { font-family: var(--font-head); font-size: 30px; line-height: 1; }
-.event-card .info .name { font-family: var(--font-head); font-size: 17px; letter-spacing: .5px; line-height: 1.2; }
-.event-card .info .meta { color: var(--muted); font-size: 13px; margin-top: 4px; }
+.event-card .body { padding: 10px; display: flex; gap: 8px; }
+.datebox { text-align: center; min-width: 40px; }
+.datebox .mon { font-family: var(--font-head); color: var(--accent); font-size: 11px; letter-spacing: 1.5px; }
+.datebox .day { font-family: var(--font-head); font-size: 22px; line-height: 1; }
+.event-card .info .name { font-family: var(--font-head); font-size: 14px; letter-spacing: .5px; line-height: 1.2; }
+.event-card .info .meta { color: var(--muted); font-size: 12px; margin-top: 3px; }
 .chip {
   display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
   background: var(--panel-2); border: 1px solid var(--line); color: var(--muted);
@@ -123,13 +123,13 @@ h3 { font-size: 18px; }
   display: grid; grid-template-columns: 1fr; border: 1px solid var(--accent-dark); border-radius: 8px;
   overflow: hidden; background: linear-gradient(120deg, #1a0d11, #141414 60%); text-decoration: none;
 }
-.featured-card .fc-img { max-height: 420px; overflow: hidden; }
+.featured-card .fc-img { max-height: 200px; overflow: hidden; }
 .featured-card .fc-img img { width: 100%; height: 100%; object-fit: cover; }
-.featured-card .fc-body { padding: 26px; }
-.featured-card .fc-kicker { font-family: var(--font-head); color: var(--accent); letter-spacing: 4px; font-size: 13px; }
-.featured-card .fc-name { font-family: var(--font-head); font-size: clamp(28px, 5vw, 44px); line-height: 1.05; margin: 8px 0; }
-.featured-card .fc-meta { color: var(--muted); }
-@media (min-width: 760px) { .featured-card { grid-template-columns: 1fr 1fr; } .featured-card .fc-img { max-height: none; } }
+.featured-card .fc-body { padding: 16px; }
+.featured-card .fc-kicker { font-family: var(--font-head); color: var(--accent); letter-spacing: 4px; font-size: 12px; }
+.featured-card .fc-name { font-family: var(--font-head); font-size: clamp(18px, 3vw, 26px); line-height: 1.05; margin: 6px 0; }
+.featured-card .fc-meta { color: var(--muted); font-size: 13px; }
+@media (min-width: 760px) { .featured-card { grid-template-columns: 1fr 1fr; } .featured-card .fc-img { max-height: 260px; } }
 
 /* ---------- Event detail ---------- */
 .event-hero { display: grid; gap: 26px; margin-top: 20px; }
