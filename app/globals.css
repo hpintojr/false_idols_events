@@ -91,7 +91,7 @@ h3 { font-size: 18px; }
 .inline { display: inline; }
 
 /* ---------- Event cards ---------- */
-.event-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px; }
+.event-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px; }
 .event-card {
   background: var(--panel); border: 1px solid var(--line); border-radius: 6px; overflow: hidden;
   text-decoration: none; display: flex; flex-direction: column; transition: transform .12s ease, border-color .12s ease;
@@ -104,12 +104,12 @@ h3 { font-size: 18px; }
   font-family: var(--font-head); font-size: 30px; color: #333; letter-spacing: 2px;
   background: repeating-linear-gradient(135deg, #161616 0 14px, #121212 14px 28px);
 }
-.event-card .body { padding: 10px; display: flex; gap: 8px; }
-.datebox { text-align: center; min-width: 40px; }
-.datebox .mon { font-family: var(--font-head); color: var(--accent); font-size: 11px; letter-spacing: 1.5px; }
-.datebox .day { font-family: var(--font-head); font-size: 22px; line-height: 1; }
-.event-card .info .name { font-family: var(--font-head); font-size: 14px; letter-spacing: .5px; line-height: 1.2; }
-.event-card .info .meta { color: var(--muted); font-size: 12px; margin-top: 3px; }
+.event-card .body { padding: 14px; display: flex; gap: 12px; }
+.datebox { text-align: center; min-width: 52px; }
+.datebox .mon { font-family: var(--font-head); color: var(--accent); font-size: 13px; letter-spacing: 2px; }
+.datebox .day { font-family: var(--font-head); font-size: 30px; line-height: 1; }
+.event-card .info .name { font-family: var(--font-head); font-size: 17px; letter-spacing: .5px; line-height: 1.2; }
+.event-card .info .meta { color: var(--muted); font-size: 13px; margin-top: 4px; }
 .chip {
   display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
   background: var(--panel-2); border: 1px solid var(--line); color: var(--muted);
